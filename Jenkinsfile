@@ -16,16 +16,6 @@ pipeline {
       }
      }
   }
-            stage('newman') {
-            steps {
-                sh 'newman run AdamLaborationPostmanCollection.json --environment AdamLaborationPostmanEnviroments.json --reporters junit'
-            }
-            post {
-                always {
-                        junit '**/*xml'
-                    }
-                }
-        }
     
  }
 }
