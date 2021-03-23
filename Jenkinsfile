@@ -29,7 +29,7 @@ pipeline {
     
       stage('Robot Framework System tests with Selenium') {
             steps {
-                sh 'robot -d Results  Tests'
+                sh 'robot --variable BROWSER:headlesschrome -d Results  Tests'
             }
             post {
                 always {
@@ -52,12 +52,7 @@ pipeline {
             }
         }
      
-         
-     
-     
-     
-     
-          stage('Test') {
+               stage('Test') {
                 steps {
                         sh "mvn test"
                      }
@@ -66,12 +61,7 @@ pipeline {
                   junit '**/target/surefire-reports/TEST*.xml'
               }
            }
-      }
-     
-
-     
-     
-     
+      }   
   }
  }
 
