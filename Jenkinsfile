@@ -6,12 +6,29 @@ pipeline {
                git 'https://github.com/AmerRasheed/fooproject.git'
           }
      }
-      stage ('Build') {
+           stage ('Build') {
               steps {
                      sh "mvn compile"
                 }
             }
-      stage('Test') {
+     
+       stage('newman') {
+            steps {
+                sh 'newman run Restful_Booker.postman_collection.json --environment Restful_Booker.postman_environment.json --reporters junit'
+                            
+             
+            }
+            post {
+                always {
+                        junit '**/*xml'
+                    }
+                }
+        }
+     
+     
+     
+     
+          stage('Test') {
                 steps {
                         sh "mvn test"
                      }
@@ -22,4 +39,5 @@ pipeline {
            }
       }
   }
-        }
+ }
+
