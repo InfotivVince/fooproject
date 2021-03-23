@@ -12,24 +12,8 @@ pipeline {
                 }
             }
      
-       stage('newman') {
-            steps {
-                sh 'newman run Restful_Booker.postman_collection.json --environment Restful_Booker.postman_environment.json --reporters junit'
-                            
-             
-            }
-            post {
-                always {
-                        junit '**/*xml'
-                    }
-                }
-        }
      
-
-     
-     
-     
-     stage('Robot Framework System tests with Selenium') {
+      stage('Robot Framework System tests with Selenium') {
             steps {
                 sh 'robot --variable BROWSER:headlesschrome -d Results  Tests'
             }
@@ -54,6 +38,26 @@ pipeline {
             }
         }
      
+     
+    
+           stage('newman') {
+            steps {
+                sh 'newman run Restful_Booker.postman_collection.json --environment Restful_Booker.postman_environment.json --reporters junit'
+                            
+             
+            }
+            post {
+                always {
+                        junit '**/*xml'
+                    }
+                }
+        }
+     
+
+     
+     
+     
+    
      
           stage('Test') {
                 steps {
