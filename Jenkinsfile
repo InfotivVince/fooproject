@@ -37,7 +37,7 @@ stage('Robot Framework System tests with Selenium') {
                           step(
                                 [
                                   $class              : 'RobotPublisher',
-                                  outputPath          : 'Tests/results',
+                                  outputPath          : 'Tests/Results',
                                   outputFileName      : '**/output.xml',
                                   reportFileName      : '**/report.html',
                                   logFileName         : '**/log.html',
