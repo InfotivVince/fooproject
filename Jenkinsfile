@@ -27,9 +27,9 @@ pipeline {
                 }
         }
     
-      stage('Robot Framework System tests with Selenium') {
+stage('Robot Framework System tests with Selenium') {
             steps {
-                sh 'robot -d Results  Tests'
+                sh 'robot --variable log.html -- variable output.xml --variable report.html  -d Results  Tests'
             }
             post {
                 always {
