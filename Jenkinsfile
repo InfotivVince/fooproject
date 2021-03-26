@@ -15,6 +15,8 @@ pipeline {
         junit '**/TEST*.xml'
       }
      }
+      
   }
  }
 }
+
